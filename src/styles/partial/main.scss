@@ -1,0 +1,40 @@
+#commande {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    position: relative;
+    section{
+        &:first-child {
+            width: 70%;
+        
+            >div {
+                &:last-child {
+                    text-align: center;
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: row;
+        
+                    >div {
+                        width: 50%;
+                        figure {
+                            width: 60%;
+                            margin: auto;
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        &:last-child {
+            width: 30%;
+            position: fixed;
+            height: 100%;
+            right: 0;
+            top: 0;
+            background-color: rgb(226, 192, 0);
+        }
+    }
+}

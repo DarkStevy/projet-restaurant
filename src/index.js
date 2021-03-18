@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
 import App from './App';
+import { total, products } from './reduce/pannier';
+import visibleHeader from './reduce/visibleHeader';
 import reportWebVitals from './reportWebVitals';
 
+const reduceRouter = combineReducers({
+  headerReduce: visibleHeader,
+  pannier: products,
+  total : total
+})
+
+const reducer = createStore(reduceRouter);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  
+  <Provider store={reducer}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
