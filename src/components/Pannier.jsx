@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { order } from '../functions/oder';
 import { arraySandwich } from '../products/arraySandwich';
-import { Summary } from './Summary';
 
 export default function Pannier() {
     const dispatch = useDispatch();

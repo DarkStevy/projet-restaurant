@@ -18,7 +18,7 @@ export function Desserts() {
                     nameClass: "headerVisible",
                 })
         }
-    }, []);
+    }, [state.headerReduce.class, dispatch]);
 
     /**
     * Cette méthode ajoute un article au panier
