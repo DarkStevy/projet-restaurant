@@ -3,7 +3,7 @@ const initialStateClass = {
     classOverlaySummary: "overlaySummaryNone"
 }
 
-export default function(state = initialStateClass, action = {}) {
+export default function componentClass(state = initialStateClass, action = {}) {
     switch(action.type) {
         case 'CLASSSUMMARY':
           return {

@@ -2,7 +2,7 @@ const intialStateHeader = {
   
 }
 
-export default function(state = intialStateHeader, action = {}) {
+export default function visibleHeader(state = intialStateHeader, action = {}) {
     switch(action.type) {
         case 'PATH':
           return {
