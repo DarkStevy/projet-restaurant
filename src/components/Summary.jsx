@@ -18,7 +18,7 @@ export function Summary() {
     function closeSummary() {
         dispatch({
             type: "CLASSSUMMARY",
-            classNameSummary: "summaryNone",
+            nameClassSummary: "summaryNone",
             nameClassOverlaySummary : "overlaySummaryNone"
         })
     }

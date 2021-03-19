@@ -1,4 +1,5 @@
 .overlaySummary {
+    display: block;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -9,11 +10,16 @@
     
 }
 .summary {
-        position: absolute;
-        height: 90%;
-        width: 90%;
-        top: 5%;
-        left: 5%;
-        z-index: 15;
-        background-color: white;
-    }
+    display: block;
+    position: absolute;
+    height: 90%;
+    width: 90%;
+    top: 5%;
+    left: 5%;
+    z-index: 15;
+    background-color: white;
+}
+
+.summaryNone, .overlaySummaryNone {
+    display: none;
+}
