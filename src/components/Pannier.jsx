@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { order } from '../functions/oder';
 import { arraySandwich } from '../products/arraySandwich';
+import { Summary } from './Summary';
 
 export default function Pannier() {
     const dispatch = useDispatch();
@@ -10,20 +11,39 @@ export default function Pannier() {
 
     const arrayProduct = arraySandwich;
 
+    /**
+     * Permet de supprimer tout le panier
+     */
     function deletePannier() {
         dispatch({
             type: "RESET"
         })
     }
 
-    function clickProductOrder(pannier, calc, count, deleteProduct) {
-        let {category, keyProduct, name, price} = pannier
-        let {price: priceProduct} = arrayProduct[category][keyProduct];
+    /**
+    * Cette méthode ajoute un article au panier
+    * @param statePannier de type Array, qui correspond au tableau du produit selectionner dans le pannier
+    * @param calc de type String, qui correspond au signe + ou - ce qui permet de soustraire ou d'additionner le prix
+    * @param count de type Number, qui correspond à la quantité de l'article que l'on souhaite ajouter ou supprimer au panier.
+    * @param deleteProduct de type String, qui correspond à la fonction à executer. Renvoi delete si on supprime un produit ou none pour ne pas supprimer 
+    */
+    function clickProductOrder(statePannier, calc, count, deleteProduct) {
+        const {category, keyProduct, name, price} = statePannier
+        const {price: priceProduct} = arrayProduct[category][keyProduct];
+        const { pannier, total } = order(name, count, priceProduct, price, keyProduct, calc, deleteProduct)
 
-        dispatch(order(name, count, priceProduct, price, keyProduct, calc, deleteProduct).pannier)
-        dispatch(order(name, count, priceProduct, price, keyProduct, calc, deleteProduct).total)
+        dispatch(pannier);
+        dispatch(total);
     }
 
+    function openSummary() {
+        dispatch({
+            type: "CLASSSUMMARY",
+            nameClassSummary: "summary",
+            nameClassOverlaySummary : "overlaySummary"
+        })
+    }
+    
     return (
         <div>
             {
@@ -45,6 +65,11 @@ export default function Pannier() {
             }
             <p>Total : {Math.round(state.total.total * 100) / 100}€</p>
             <button onClick={() => deletePannier()}>Annuler ma commande</button>
+            {
+                (state.total.total > 0 ) && (
+                    <button onClick={openSummary}>Commander</button>
+                )
+            }
         </div>
     )
 }

@@ -1,0 +1,19 @@
+.overlaySummary {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(146, 146, 146, 0.418);
+    
+    
+}
+.summary {
+        position: absolute;
+        height: 90%;
+        width: 90%;
+        top: 5%;
+        left: 5%;
+        z-index: 15;
+        background-color: white;
+    }

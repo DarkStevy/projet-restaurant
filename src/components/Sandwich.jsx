@@ -21,11 +21,15 @@ export function Sandwich() {
         }
     }, []);
 
-    function addOrder(index, count) {
-        let {name, price} = burger[index];
-
-        dispatch(order(name, count, price, "", index, "+", "none").pannier)
-        dispatch(order(name, count, price, "", index, "+", "none").total)
+    /**
+    * Cette méthode ajoute un article au panier
+    * @param index de type Number, qui correspond à la position de l'article dans la liste des articles 
+    **/
+    function addOrder(index) {
+        const {name, price} = burger[index];
+        const { pannier, total } = order(name, 1, price, "", index, "+", "none")
+        dispatch(pannier);
+        dispatch(total);
         
     }
 
@@ -44,7 +48,7 @@ export function Sandwich() {
                                     <img src={value.img} alt={value.name} />
                                 </figure>
                                 <p>{value.price}€</p>
-                                <button onClick={() => addOrder(index, 1)}>Commander</button>
+                                <button onClick={() => addOrder(index)}>Commander</button>
                             </div>
                         ))}
                     </div>

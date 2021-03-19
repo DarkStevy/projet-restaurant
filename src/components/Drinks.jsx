@@ -20,11 +20,15 @@ export function Drinks() {
         }
     }, []);
 
-    function addOrder(index, count) {
-        let {name, price} = drinks[index];
-        
-        dispatch(order(name, count, price, "", index, "+", "none").pannier)
-        dispatch(order(name, count, price, "", index, "+", "none").total)
+    /**
+    * Cette méthode ajoute un article au panier
+    * @param index de type Number, qui correspond à la position de l'article dans la liste des articles 
+    **/
+    function addOrder(index) {
+        const {name, price} = drinks[index];
+        const { pannier, total } = order(name, 1, price, "", index, "+", "none")
+        dispatch(pannier);
+        dispatch(total);
     }
 
     return (

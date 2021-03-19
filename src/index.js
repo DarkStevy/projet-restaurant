@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import App from './App';
+import componentClass from './reduce/componentClass';
 import { total, products } from './reduce/pannier';
 import visibleHeader from './reduce/visibleHeader';
 import reportWebVitals from './reportWebVitals';
@@ -10,7 +11,8 @@ import reportWebVitals from './reportWebVitals';
 const reduceRouter = combineReducers({
   headerReduce: visibleHeader,
   pannier: products,
-  total : total
+  total : total,
+  componentClass: componentClass
 })
 
 const reducer = createStore(reduceRouter);
